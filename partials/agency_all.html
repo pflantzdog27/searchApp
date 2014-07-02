@@ -1,0 +1,30 @@
+<select ng-model="reverseSort">
+    <option value="location">Location</option>
+    <option value="title">Job Title</option>
+    <option value="posted">Date</option>
+</select>
+<div class="form-group">
+    <label class="sr-only" for="searchLocation">Password</label>
+    <input class="col-sm-12" type="text" ng-model="keywordFilter" id="searchLocation"
+           placeholder="Keyword Search">
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>Location</th>
+            <th>Posted</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="job in jobs | filter: keywordFilter | orderBy : reverseSort">
+            <td><a href="{{ job.link }}">{{ job.title }}</a></td>
+            <td>{{ job.location }}</td>
+            <td>{{ job.posted }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<!--[if lt IE 7]>
+<p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
